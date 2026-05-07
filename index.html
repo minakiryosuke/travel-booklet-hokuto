@@ -617,6 +617,88 @@
     .bg-white { background: var(--warm-white); }
     .bg-forest-light { background: linear-gradient(180deg, #f0f7f0 0%, #e8f4e8 100%); }
     .bg-sky-light { background: linear-gradient(180deg, #e8f4f8 0%, #f0f7f0 100%); }
+
+    /* ===== MEMBERS ===== */
+    .members-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 28px;
+    }
+
+    .member-card {
+      background: var(--warm-white);
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid rgba(168,197,160,0.35);
+      box-shadow: 0 4px 24px rgba(58,90,64,0.09);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+    }
+
+    .member-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 48px rgba(58,90,64,0.16);
+    }
+
+    .member-photo-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 100%;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--mint), var(--sage));
+    }
+
+    .member-photo {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      transition: transform 0.4s;
+    }
+
+    .member-card:hover .member-photo {
+      transform: scale(1.05);
+    }
+
+    .member-role-badge {
+      position: absolute;
+      bottom: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(58,90,64,0.88);
+      backdrop-filter: blur(6px);
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 50px;
+      white-space: nowrap;
+      letter-spacing: 0.05em;
+    }
+
+    .member-info {
+      padding: 18px 16px 20px;
+    }
+
+    .member-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--forest);
+      margin-bottom: 6px;
+    }
+
+    .member-role {
+      font-size: 0.8rem;
+      color: var(--text-mid);
+      line-height: 1.5;
+    }
+
+    @media (max-width: 600px) {
+      .members-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    }
   </style>
 </head>
 <body>
@@ -652,11 +734,74 @@
 
 <!-- ===== NAV ===== -->
 <nav class="nav">
+  <a href="#members">👥 メンバー</a>
   <a href="#timetable">📅 旅程表</a>
   <a href="#spots">📍 立ち寄りスポット</a>
   <a href="#sightseeing">🗺️ 観光・ランチ</a>
   <a href="#packing">🎒 持ち物</a>
 </nav>
+
+<!-- ===== MEMBERS ===== -->
+<div class="bg-white" id="members">
+  <div class="section">
+    <div class="section-header">
+      <div class="section-tag">MEMBERS</div>
+      <h2 class="section-title">今回の <span>メンバー</span></h2>
+      <p class="section-desc">4人でわいわい楽しみましょう！それぞれの担当はお任せあれ🔥</p>
+    </div>
+    <div class="members-grid">
+
+      <!-- みなきち -->
+      <div class="member-card">
+        <div class="member-photo-wrap">
+          <img src="みなきち.png" alt="みなきち" class="member-photo">
+          <div class="member-role-badge">🔥 サウナ担当</div>
+        </div>
+        <div class="member-info">
+          <div class="member-name">みなきち</div>
+          <div class="member-role">サウナの火おこし担当</div>
+        </div>
+      </div>
+
+      <!-- あかりんご -->
+      <div class="member-card">
+        <div class="member-photo-wrap">
+          <img src="あかりんご.png" alt="あかりんご" class="member-photo">
+          <div class="member-role-badge">🍎 スイーツ担当</div>
+        </div>
+        <div class="member-info">
+          <div class="member-name">あかりんご</div>
+          <div class="member-role">焼きマシュマロ・焼きリンゴ担当</div>
+        </div>
+      </div>
+
+      <!-- もえ -->
+      <div class="member-card">
+        <div class="member-photo-wrap">
+          <img src="もえ.png" alt="もえ" class="member-photo">
+          <div class="member-role-badge">🌅 朝活担当</div>
+        </div>
+        <div class="member-info">
+          <div class="member-name">もえ</div>
+          <div class="member-role">朝活担当</div>
+        </div>
+      </div>
+
+      <!-- まとのん -->
+      <div class="member-card">
+        <div class="member-photo-wrap">
+          <img src="まとのん.png" alt="まとのん" class="member-photo">
+          <div class="member-role-badge">🍜 深夜担当</div>
+        </div>
+        <div class="member-info">
+          <div class="member-name">まとのん</div>
+          <div class="member-role">深夜ラーメン担当</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
 
 <!-- ===== TIMETABLE ===== -->
 <div class="bg-cream" id="timetable">
