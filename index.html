@@ -50,6 +50,7 @@
       content: '';
       position: absolute;
       inset: 0;
+      pointer-events: none;
       background-image:
         radial-gradient(circle at 20% 80%, rgba(168,197,160,0.15) 0%, transparent 50%),
         radial-gradient(circle at 80% 20%, rgba(126,184,201,0.1) 0%, transparent 50%);
@@ -139,6 +140,8 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
+      position: relative;
+      z-index: 2;
       background: linear-gradient(135deg, #c8956c 0%, #b87a50 100%);
       border: none;
       color: #fff;
@@ -148,6 +151,7 @@
       padding: 17px 40px;
       border-radius: 50px;
       text-decoration: none;
+      cursor: pointer;
       transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
       box-shadow: 0 6px 28px rgba(184,122,80,0.45);
     }
