@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🏕️ 旅のしおり｜北杜市グランピング旅行 5/23〜5/25</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #3a5a40;
+      --sage: #6b8f71;
+      --mint: #a8c5a0;
+      --cream: #faf6f0;
+      --warm-white: #fffef9;
+      --earth: #8b6914;
+      --sand: #d4a853;
+      --terracotta: #c17f5c;
+      --bark: #5c3d2e;
+      --sky: #7eb8c9;
+      --light-sky: #d4edf4;
+      --text-dark: #2c2c2c;
+      --text-mid: #555;
+      --text-light: #888;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      background-color: var(--cream);
+      color: var(--text-dark);
+      line-height: 1.8;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      background: linear-gradient(160deg, #2d4a32 0%, #3a5a40 40%, #4a7a52 70%, #6b8f71 100%);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 80%, rgba(168,197,160,0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(126,184,201,0.1) 0%, transparent 50%);
+    }
+
+    .hero-stars {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .star {
+      position: absolute;
+      width: 3px; height: 3px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 50%;
+      animation: twinkle 3s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      0% { opacity: 0.3; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.5); }
+    }
+
+    .hero-badge {
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #e8f5e9;
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      padding: 6px 20px;
+      border-radius: 50px;
+      margin-bottom: 24px;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 8vw, 5rem);
+      color: #fff;
+      text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .hero-subtitle {
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: clamp(1rem, 3vw, 1.4rem);
+      color: rgba(255,255,255,0.85);
+      margin-bottom: 32px;
+      font-weight: 300;
+      letter-spacing: 0.1em;
+    }
+
+    .hero-date {
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 16px;
+      padding: 20px 40px;
+      color: #fff;
+      display: inline-flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .hero-date-item { text-align: center; }
+    .hero-date-item .label { font-size: 0.7rem; letter-spacing: 0.15em; opacity: 0.8; }
+    .hero-date-item .value { font-size: 1.1rem; font-weight: 700; margin-top: 2px; }
+
+    .hero-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.3); }
+
+    .hero-icons {
+      margin-top: 40px;
+      display: flex;
+      gap: 24px;
+      font-size: 2rem;
+      opacity: 0.9;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255,255,255,0.6);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ===== NAVIGATION ===== */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(58, 90, 64, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 0 20px;
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.15);
+    }
+
+    .nav a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      padding: 14px 16px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      transition: all 0.2s;
+      border-bottom: 2px solid transparent;
+      white-space: nowrap;
+    }
+
+    .nav a:hover {
+      color: #fff;
+      border-bottom-color: var(--sand);
+    }
+
+    /* ===== SECTIONS ===== */
+    .section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 80px 24px;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      background: var(--mint);
+      color: var(--forest);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      padding: 4px 16px;
+      border-radius: 50px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      color: var(--forest);
+      line-height: 1.3;
+    }
+
+    .section-title span {
+      font-style: italic;
+      color: var(--sage);
+    }
+
+    .section-desc {
+      color: var(--text-mid);
+      font-size: 0.95rem;
+      margin-top: 12px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ===== TIMETABLE ===== */
+    .day-block {
+      margin-bottom: 60px;
+    }
+
+    .day-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+
+    .day-badge {
+      background: var(--forest);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      padding: 6px 18px;
+      border-radius: 50px;
+      white-space: nowrap;
+    }
+
+    .day-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--forest);
+    }
+
+    .day-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, var(--mint), transparent);
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 32px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 12px;
+      bottom: 12px;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--mint), var(--sage), var(--mint));
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 24px;
+      background: var(--warm-white);
+      border-radius: 16px;
+      padding: 20px 24px;
+      border: 1px solid rgba(168,197,160,0.3);
+      box-shadow: 0 2px 12px rgba(58,90,64,0.06);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .timeline-item:hover {
+      transform: translateX(4px);
+      box-shadow: 0 4px 20px rgba(58,90,64,0.12);
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -28px;
+      top: 22px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--sage);
+      border: 2px solid var(--cream);
+      box-shadow: 0 0 0 2px var(--mint);
+    }
+
+    .timeline-item.highlight::before { background: var(--sand); box-shadow: 0 0 0 2px var(--sand); }
+    .timeline-item.special::before { background: var(--terracotta); box-shadow: 0 0 0 2px var(--terracotta); }
+
+    .timeline-time {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--sage);
+      letter-spacing: 0.1em;
+      margin-bottom: 4px;
+    }
+
+    .timeline-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .timeline-emoji { font-size: 1.1rem; }
+
+    .timeline-badge {
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 2px 10px;
+      border-radius: 50px;
+      letter-spacing: 0.05em;
+    }
+
+    .badge-lunch { background: #fff3cd; color: #856404; }
+    .badge-shop { background: #d1ecf1; color: #0c5460; }
+    .badge-stay { background: #d4edda; color: #155724; }
+    .badge-check { background: #f8d7da; color: #721c24; }
+    .badge-sightseeing { background: #e2d9f3; color: #4a1d96; }
+
+    .timeline-desc {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      margin-top: 8px;
+      line-height: 1.7;
+    }
+
+    /* ===== SPOT CARDS ===== */
+    .spots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .spot-card {
+      background: var(--warm-white);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(168,197,160,0.3);
+      box-shadow: 0 4px 20px rgba(58,90,64,0.08);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .spot-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 40px rgba(58,90,64,0.15);
+    }
+
+    .spot-card-header {
+      padding: 24px 24px 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .spot-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .icon-green { background: linear-gradient(135deg, #a8c5a0, #6b8f71); }
+    .icon-blue { background: linear-gradient(135deg, #7eb8c9, #5a9db0); }
+    .icon-orange { background: linear-gradient(135deg, #f0c080, #d4a853); }
+    .icon-red { background: linear-gradient(135deg, #e8a090, #c17f5c); }
+    .icon-purple { background: linear-gradient(135deg, #c5b8e8, #9b8ec4); }
+
+    .spot-info { flex: 1; }
+    .spot-name { font-size: 1rem; font-weight: 700; color: var(--text-dark); }
+    .spot-type { font-size: 0.72rem; color: var(--text-light); margin-top: 2px; letter-spacing: 0.05em; }
+
+    .spot-card-body {
+      padding: 0 24px 24px;
+    }
+
+    .spot-desc {
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .spot-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .spot-tag {
+      background: var(--cream);
+      border: 1px solid var(--mint);
+      color: var(--forest);
+      font-size: 0.7rem;
+      padding: 3px 10px;
+      border-radius: 50px;
+    }
+
+    .spot-address {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      margin-top: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 4px;
+    }
+
+    /* ===== SIGHTSEEING ===== */
+    .sightseeing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .sight-card {
+      background: var(--warm-white);
+      border-radius: 20px;
+      padding: 24px;
+      border: 1px solid rgba(168,197,160,0.3);
+      box-shadow: 0 2px 12px rgba(58,90,64,0.06);
+      transition: transform 0.2s;
+    }
+
+    .sight-card:hover { transform: translateY(-4px); }
+
+    .sight-number {
+      width: 36px; height: 36px;
+      background: var(--forest);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .sight-emoji { font-size: 1.8rem; margin-bottom: 10px; }
+    .sight-name { font-size: 1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+    .sight-desc { font-size: 0.83rem; color: var(--text-mid); line-height: 1.7; }
+    .sight-dist { font-size: 0.72rem; color: var(--sage); margin-top: 8px; font-weight: 500; }
+
+    /* ===== PACKING LIST ===== */
+    .packing-section {
+      background: linear-gradient(135deg, #f0f7f0, #e8f4e8);
+    }
+
+    .packing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .pack-card {
+      background: var(--warm-white);
+      border-radius: 20px;
+      padding: 24px;
+      border: 1px solid rgba(168,197,160,0.25);
+      box-shadow: 0 2px 12px rgba(58,90,64,0.06);
+    }
+
+    .pack-card-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      padding-bottom: 14px;
+      border-bottom: 1px dashed var(--mint);
+    }
+
+    .pack-icon { font-size: 1.5rem; }
+    .pack-title { font-size: 1rem; font-weight: 700; color: var(--forest); }
+
+    .pack-items { list-style: none; }
+    .pack-items li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 7px 0;
+      font-size: 0.85rem;
+      color: var(--text-mid);
+      border-bottom: 1px solid rgba(168,197,160,0.15);
+    }
+    .pack-items li:last-child { border-bottom: none; }
+
+    .check-box {
+      width: 18px; height: 18px;
+      border: 2px solid var(--mint);
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .check-box.checked {
+      background: var(--sage);
+      border-color: var(--sage);
+    }
+
+    .check-box.checked::after {
+      content: '✓';
+      color: white;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .pack-item-text { flex: 1; line-height: 1.5; }
+    .pack-item-note { font-size: 0.72rem; color: var(--text-light); display: block; margin-top: 1px; }
+
+    .amenity-note {
+      margin-top: 24px;
+      background: linear-gradient(135deg, var(--light-sky), #e8f4e8);
+      border-radius: 16px;
+      padding: 20px 24px;
+      border-left: 4px solid var(--sky);
+    }
+
+    .amenity-note-title {
+      font-weight: 700;
+      color: var(--forest);
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .amenity-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .amenity-tag {
+      background: rgba(255,255,255,0.8);
+      border: 1px solid var(--sky);
+      color: #0c5460;
+      font-size: 0.75rem;
+      padding: 4px 12px;
+      border-radius: 50px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--bark);
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.8rem;
+    }
+
+    footer .footer-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    /* ===== DIVIDER ===== */
+    .wave-divider {
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+    }
+
+    .wave-divider svg { display: block; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 600px) {
+      .hero-date { flex-direction: column; gap: 16px; padding: 20px 28px; }
+      .hero-divider { width: 40px; height: 1px; }
+      .nav { overflow-x: auto; justify-content: flex-start; }
+      .nav a { padding: 14px 12px; font-size: 0.75rem; }
+      .section { padding: 60px 16px; }
+      .timeline { padding-left: 24px; }
+      .timeline-item { padding: 16px 18px; }
+    }
+
+    /* ===== SECTION BACKGROUNDS ===== */
+    .bg-cream { background: var(--cream); }
+    .bg-white { background: var(--warm-white); }
+    .bg-forest-light { background: linear-gradient(180deg, #f0f7f0 0%, #e8f4e8 100%); }
+    .bg-sky-light { background: linear-gradient(180deg, #e8f4f8 0%, #f0f7f0 100%); }
+  </style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-stars" id="stars"></div>
+  <div class="hero-badge">✦ TRAVEL BOOKLET ✦</div>
+  <h1 class="hero-title">旅のしおり</h1>
+  <p class="hero-subtitle">山梨県北杜市 八ヶ岳グランピング旅行</p>
+  <div class="hero-date">
+    <div class="hero-date-item">
+      <div class="label">DEPARTURE</div>
+      <div class="value">5月23日（木）</div>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-date-item">
+      <div class="label">NIGHTS</div>
+      <div class="value">2泊3日</div>
+    </div>
+    <div class="hero-divider"></div>
+    <div class="hero-date-item">
+      <div class="label">RETURN</div>
+      <div class="value">5月25日（土）</div>
+    </div>
+  </div>
+  <div class="hero-icons">🏕️ 🌲 🗻 🛁 🔥</div>
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <span>▼</span>
+  </div>
+</section>
+
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <a href="#timetable">📅 旅程表</a>
+  <a href="#spots">📍 立ち寄りスポット</a>
+  <a href="#sightseeing">🗺️ 観光・ランチ</a>
+  <a href="#packing">🎒 持ち物</a>
+</nav>
+
+<!-- ===== TIMETABLE ===== -->
+<div class="bg-cream" id="timetable">
+  <div class="section">
+    <div class="section-header">
+      <div class="section-tag">SCHEDULE</div>
+      <h2 class="section-title">3日間の <span>旅程表</span></h2>
+      <p class="section-desc">水天宮前を出発し、人形町・SA・コストコを経由して北杜市のコテージへ。</p>
+    </div>
+
+    <!-- Day 1 -->
+    <div class="day-block">
+      <div class="day-header">
+        <div class="day-badge">DAY 1 · 5/23（木）</div>
+        <div class="day-title">出発・買い出し・チェックイン</div>
+        <div class="day-line"></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-time">08:30</div>
+          <div class="timeline-title"><span class="timeline-emoji">🚗</span> 出発</div>
+          <div class="timeline-desc">水天宮前駅周辺を出発。首都高速へ向かいます。</div>
+        </div>
+        <div class="timeline-item highlight">
+          <div class="timeline-time">08:40</div>
+          <div class="timeline-title"><span class="timeline-emoji">🍔</span> マクドナルド 人形町店 <span class="timeline-badge badge-lunch">朝食</span></div>
+          <div class="timeline-desc">水天宮前から車で数分。24時間営業なので早朝でも安心。ドライブのお供にコーヒーや朝マックを。<br><small>📍 東京都中央区日本橋人形町2-3-1</small></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">09:00</div>
+          <div class="timeline-title"><span class="timeline-emoji">🛣️</span> 首都高速へ</div>
+          <div class="timeline-desc">首都高速から中央自動車道へ。渋滞に注意しながら山梨方面へ。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">10:30</div>
+          <div class="timeline-title"><span class="timeline-emoji">☕</span> 談合坂SA（下り）休憩</div>
+          <div class="timeline-desc">中央道最初の大型SA。トイレ休憩や軽いストレッチに。すた丼屋・桔梗屋信玄餅など山梨グルメも充実。</div>
+        </div>
+        <div class="timeline-item highlight">
+          <div class="timeline-time">11:30</div>
+          <div class="timeline-title"><span class="timeline-emoji">🍜</span> 双葉SA（下り）でランチ <span class="timeline-badge badge-lunch">ランチ</span></div>
+          <div class="timeline-desc">富士山・南アルプスの絶景が楽しめる人気SA。2024年リニューアルのフードコートで甲州ワインビーフ丼・海鮮丼・ほうとうなど山梨グルメを堪能。</div>
+        </div>
+        <div class="timeline-item special">
+          <div class="timeline-time">13:00</div>
+          <div class="timeline-title"><span class="timeline-emoji">🛒</span> コストコ 南アルプス倉庫店 <span class="timeline-badge badge-shop">買い出し</span></div>
+          <div class="timeline-desc">2025年4月オープンの新店舗。中部横断自動車道「南アルプスIC」より車3分。BBQ食材・大容量のお酒・お菓子などをまとめ買い。<br><small>📍 山梨県南アルプス市寺部2200-1</small></div>
+        </div>
+        <div class="timeline-item special">
+          <div class="timeline-time">14:30</div>
+          <div class="timeline-title"><span class="timeline-emoji">🥬</span> ひまわり市場（地元スーパー） <span class="timeline-badge badge-shop">買い出し</span></div>
+          <div class="timeline-desc">テレビでも紹介される北杜市の人気スーパー。地元産の新鮮野菜・こだわり食材・ユニークなお惣菜が充実。コストコで揃わない細かい食材を調達。<br><small>📍 山梨県北杜市大泉町谷戸2008</small></div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">15:30</div>
+          <div class="timeline-title"><span class="timeline-emoji">🏠</span> コテージ到着・チェックイン <span class="timeline-badge badge-stay">チェックイン</span></div>
+          <div class="timeline-desc">山梨県北杜市（甲斐小泉駅近く）のコテージに到着。セルフチェックイン。荷物を整理して早速くつろぎタイムへ。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">16:00〜</div>
+          <div class="timeline-title"><span class="timeline-emoji">🔥</span> サウナ・露天風呂タイム</div>
+          <div class="timeline-desc">24時間利用可能な専用サウナと露天風呂（ジャグジー）を満喫。富士山の眺めを楽しみながら旅の疲れを癒して。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">18:30〜</div>
+          <div class="timeline-title"><span class="timeline-emoji">🍖</span> 夕食（BBQ・自炊）</div>
+          <div class="timeline-desc">コストコやひまわり市場で買った食材でBBQや夕食。フルキッチン完備なので本格料理も可能。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 2 -->
+    <div class="day-block">
+      <div class="day-header">
+        <div class="day-badge">DAY 2 · 5/24（金）</div>
+        <div class="day-title">自然満喫・リフレッシュデー</div>
+        <div class="day-line"></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-time">08:30</div>
+          <div class="timeline-title"><span class="timeline-emoji">☀️</span> 朝食・のんびりタイム</div>
+          <div class="timeline-desc">コテージでゆっくり朝食。富士山の眺めを楽しみながら朝のサウナも◎</div>
+        </div>
+        <div class="timeline-item highlight">
+          <div class="timeline-time">10:00</div>
+          <div class="timeline-title"><span class="timeline-emoji">🌿</span> 周辺観光・散策 <span class="timeline-badge badge-sightseeing">観光</span></div>
+          <div class="timeline-desc">吐竜の滝・まきば公園・清泉寮・八ヶ岳倶楽部など周辺の観光スポットへ（詳細は観光スポットセクション参照）。</div>
+        </div>
+        <div class="timeline-item highlight">
+          <div class="timeline-time">12:30</div>
+          <div class="timeline-title"><span class="timeline-emoji">🍽️</span> ランチ <span class="timeline-badge badge-lunch">ランチ</span></div>
+          <div class="timeline-desc">清泉寮のジャージー牛乳ソフトクリームや、ELOISES Café、八ヶ岳倶楽部のカフェランチがおすすめ（詳細は観光・ランチセクション参照）。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">15:00</div>
+          <div class="timeline-title"><span class="timeline-emoji">🛍️</span> 道の駅・お土産</div>
+          <div class="timeline-desc">道の駅こぶちさわや地元の直売所でお土産・特産品を購入。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">16:30</div>
+          <div class="timeline-title"><span class="timeline-emoji">🛁</span> コテージでリフレッシュ</div>
+          <div class="timeline-desc">サウナ→露天風呂（水風呂）で「ととのう」体験を。夜は満天の星空観察も。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">19:00〜</div>
+          <div class="timeline-title"><span class="timeline-emoji">🌙</span> 夕食・焚き火タイム</div>
+          <div class="timeline-desc">2日目の夕食。テレビやボードゲームで夜もゆっくり楽しんで。</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 3 -->
+    <div class="day-block">
+      <div class="day-header">
+        <div class="day-badge">DAY 3 · 5/25（土）</div>
+        <div class="day-title">チェックアウト・帰路</div>
+        <div class="day-line"></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-time">08:30</div>
+          <div class="timeline-title"><span class="timeline-emoji">🌅</span> 朝食・片付け</div>
+          <div class="timeline-desc">最後の朝食を楽しみながら荷物の整理。忘れ物チェックを忘れずに。</div>
+        </div>
+        <div class="timeline-item special">
+          <div class="timeline-time">10:00</div>
+          <div class="timeline-title"><span class="timeline-emoji">🚪</span> チェックアウト <span class="timeline-badge badge-check">チェックアウト</span></div>
+          <div class="timeline-desc">コテージを出発。ゴミ出しルールを確認して丁寧に退室を。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">10:30</div>
+          <div class="timeline-title"><span class="timeline-emoji">🎁</span> お土産・寄り道</div>
+          <div class="timeline-desc">八ヶ岳リゾートアウトレット・道の駅・ひまわり市場などで最後のお土産購入。</div>
+        </div>
+        <div class="timeline-item highlight">
+          <div class="timeline-time">12:30</div>
+          <div class="timeline-title"><span class="timeline-emoji">🍱</span> 帰りのSAでランチ <span class="timeline-badge badge-lunch">ランチ</span></div>
+          <div class="timeline-desc">中央道（上り）の双葉SAや談合坂SAでランチ。渋滞情報を確認しながら帰路へ。</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-time">16:00頃</div>
+          <div class="timeline-title"><span class="timeline-emoji">🏠</span> 帰着</div>
+          <div class="timeline-desc">水天宮前周辺に帰着。お疲れ様でした！</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SPOTS ===== -->
+<div class="bg-forest-light" id="spots">
+  <div class="section">
+    <div class="section-header">
+      <div class="section-tag">HIGHLIGHTS</div>
+      <h2 class="section-title">立ち寄り <span>スポット</span></h2>
+      <p class="section-desc">1日目に立ち寄る注目スポットをご紹介。それぞれの特徴を把握して、スムーズな旅を。</p>
+    </div>
+
+    <div class="spots-grid">
+      <!-- マクドナルド -->
+      <div class="spot-card">
+        <div class="spot-card-header">
+          <div class="spot-icon icon-orange">🍔</div>
+          <div class="spot-info">
+            <div class="spot-name">マクドナルド 人形町店</div>
+            <div class="spot-type">ファストフード · 朝食</div>
+          </div>
+        </div>
+        <div class="spot-card-body">
+          <p class="spot-desc">水天宮前から車で数分の好立地。24時間営業なので早朝出発でも安心。ドライブのお供にコーヒーや朝マックを調達して出発しよう。</p>
+          <div class="spot-tags">
+            <span class="spot-tag">24時間営業</span>
+            <span class="spot-tag">朝食</span>
+            <span class="spot-tag">水天宮前近く</span>
+          </div>
+          <div class="spot-address">📍 東京都中央区日本橋人形町2-3-1</div>
+        </div>
+      </div>
+
+      <!-- 談合坂SA -->
+      <div class="spot-card">
+        <div class="spot-card-header">
+          <div class="spot-icon icon-blue">☕</div>
+          <div class="spot-info">
+            <div class="spot-name">談合坂SA（下り）</div>
+            <div class="spot-type">サービスエリア · 休憩</div>
+          </div>
+        </div>
+        <div class="spot-card-body">
+          <p class="spot-desc">中央道最初の大型SA。トイレ休憩・軽食に最適。桔梗屋の信玄餅・すた丼屋・ドトールなど充実のラインナップ。</p>
+          <div class="spot-tags">
+            <span class="spot-tag">休憩スポット</span>
+            <span class="spot-tag">信玄餅</span>
+            <span class="spot-tag">中央道</span>
+          </div>
+          <div class="spot-address">📍 山梨県上野原市（中央自動車道下り）</div>
+        </div>
+      </div>
+
+      <!-- 双葉SA -->
+      <div class="spot-card">
+        <div class="spot-card-header">
+          <div class="spot-icon icon-purple">🍜</div>
+          <div class="spot-info">
+            <div class="spot-name">双葉SA（下り）</div>
+            <div class="spot-type">サービスエリア · ランチ ★おすすめ</div>
+          </div>
+        </div>
+        <div class="spot-card-body">
+          <p class="spot-desc">富士山・南アルプスの絶景を望む人気SA。2024年リニューアルのフードコートでは甲州ワインビーフ丼・海鮮丼・ほうとうなど山梨グルメが充実。ランチはここで決まり！</p>
+          <div class="spot-tags">
+            <span class="spot-tag">富士山の眺め</span>
+            <span class="spot-tag">甲州ワインビーフ</span>
+            <span class="spot-tag">リニューアル済み</span>
+            <span class="spot-tag">ランチ推奨</span>
+          </div>
+          <div class="spot-address">📍 山梨県甲斐市（中央自動車道下り）</div>
+        </div>
+      </div>
+
+      <!-- コストコ -->
+      <div class="spot-card">
+        <div class="spot-card-header">
+          <div class="spot-icon icon-red">🛒</div>
+          <div class="spot-info">
+            <div class="spot-name">コストコ 南アルプス倉庫店</div>
+            <div class="spot-type">会員制倉庫店 · 食材調達</div>
+          </div>
+        </div>
+        <div class="spot-card-body">
+          <p class="spot-desc">2025年4月オープンの新店舗。南アルプスICより車3分の好立地。BBQ肉・大容量のお酒・お菓子・冷凍食品などをまとめ買い。平日なので比較的空いている。</p>
+          <div class="spot-tags">
+            <span class="spot-tag">2025年4月開店</span>
+            <span class="spot-tag">会員証必須</span>
+            <span class="spot-tag">BBQ食材</span>
+            <span class="spot-tag">南アルプスIC近く</span>
+          </div>
+          <div class="spot-address">📍 山梨県南アルプス市寺部2200-1</div>
+        </div>
+      </div>
+
+      <!-- ひまわり市場 -->
+      <div class="spot-card">
+        <div class="spot-card-header">
+          <div class="spot-icon icon-green">🥬</div>
+          <div class="spot-info">
+            <div class="spot-name">ひまわり市場</div>
+            <div class="spot-type">地元スーパー · 食材調達</div>
+          </div>
+        </div>
+        <div class="spot-card-body">
+          <p class="spot-desc">テレビでも紹介される北杜市の人気スーパー。地元産の新鮮野菜・こだわり食材・ユニークなお惣菜が充実。コストコで揃わない細かい食材や地元の特産品をここで調達。</p>
+          <div class="spot-tags">
+            <span class="spot-tag">地元野菜</span>
+            <span class="spot-tag">こだわり食材</span>
+            <span class="spot-tag">北杜市</span>
+          </div>
+          <div class="spot-address">📍 山梨県北杜市大泉町谷戸2008</div>
+        </div>
+      </div>
+
+      <!-- コテージ -->
+      <div class="spot-card">
+        <div class="spot-card-header">
+          <div class="spot-icon icon-green">🏡</div>
+          <div class="spot-info">
+            <div class="spot-name">コテージ（Airbnb）</div>
+            <div class="spot-type">宿泊先 · 北杜市 ★4.9</div>
+          </div>
+        </div>
+        <div class="spot-card-body">
+          <p class="spot-desc">甲斐小泉駅近くのまるまる貸切コテージ。最大9名・寝室4・109㎡。富士山の眺望、24時間サウナ、露天風呂（ジャグジー）、フルキッチン完備。無料駐車場3台分あり。</p>
+          <div class="spot-tags">
+            <span class="spot-tag">富士山の眺め</span>
+            <span class="spot-tag">専用サウナ</span>
+            <span class="spot-tag">露天風呂</span>
+            <span class="spot-tag">フルキッチン</span>
+            <span class="spot-tag">最大9名</span>
+          </div>
+          <div class="spot-address">📍 山梨県北杜市（甲斐小泉駅近く）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SIGHTSEEING ===== -->
+<div class="bg-sky-light" id="sightseeing">
+  <div class="section">
+    <div class="section-header">
+      <div class="section-tag">SIGHTSEEING & LUNCH</div>
+      <h2 class="section-title">周辺の <span>おすすめ観光・ランチ</span></h2>
+      <p class="section-desc">2日目の観光・ランチに最適なスポットを厳選。コテージから車で15〜30分圏内。</p>
+    </div>
+
+    <h3 style="font-size:1rem; font-weight:700; color:var(--forest); margin-bottom:16px; letter-spacing:0.05em;">🗺️ 観光スポット</h3>
+    <div class="sightseeing-grid" style="margin-bottom:48px;">
+      <div class="sight-card">
+        <div class="sight-emoji">💧</div>
+        <div class="sight-name">吐竜の滝（どりゅうのたき）</div>
+        <p class="sight-desc">川俣川渓谷に流れる落差10m・幅15mの優雅な滝。日本庭園のような風情があり、新緑の5月は特に美しい。駐車場から遊歩道を10〜15分歩くと到着。</p>
+        <div class="sight-dist">🚗 コテージから約15分 · 入場無料</div>
+      </div>
+      <div class="sight-card">
+        <div class="sight-emoji">🐑</div>
+        <div class="sight-name">県立まきば公園</div>
+        <p class="sight-desc">八ヶ岳牧場の一部を開放した無料の公園。羊やヤギとのふれあい・遊歩道散策・富士山や南アルプスの眺望が楽しめる。5月は「やまなし」の花も見頃。</p>
+        <div class="sight-dist">🚗 コテージから約20分 · 入場無料</div>
+      </div>
+      <div class="sight-card">
+        <div class="sight-emoji">🌿</div>
+        <div class="sight-name">清泉寮（せいせんりょう）</div>
+        <p class="sight-desc">清里高原の森と牧草地に囲まれた総合観光施設。ジャージー牛乳を使ったソフトクリームが絶品。レストラン・カフェ・お土産屋も充実。</p>
+        <div class="sight-dist">🚗 コテージから約25分</div>
+      </div>
+      <div class="sight-card">
+        <div class="sight-emoji">🌲</div>
+        <div class="sight-name">八ヶ岳倶楽部</div>
+        <p class="sight-desc">広大な森の中に佇むカフェ・レストラン。森林浴をしながら食事が楽しめる。ギャラリーショップも併設。俳優・柳生博氏が作った自然豊かな空間。</p>
+        <div class="sight-dist">🚗 コテージから約15分</div>
+      </div>
+      <div class="sight-card">
+        <div class="sight-emoji">🛍️</div>
+        <div class="sight-name">道の駅こぶちさわ</div>
+        <p class="sight-desc">地元の農産物・特産品が揃う道の駅。八ヶ岳南麓産の野菜・果物・加工品が豊富。温泉施設「スパティオ小淵沢」も隣接。</p>
+        <div class="sight-dist">🚗 コテージから約10分</div>
+      </div>
+      <div class="sight-card">
+        <div class="sight-emoji">⛰️</div>
+        <div class="sight-name">清里テラス（サンメドウズ）</div>
+        <p class="sight-desc">標高1,900mのリフトで登る絶景テラス。富士山・南アルプス・八ヶ岳の大パノラマが広がる。5月はリフト営業中（要確認）。</p>
+        <div class="sight-dist">🚗 コテージから約30分</div>
+      </div>
+    </div>
+
+    <h3 style="font-size:1rem; font-weight:700; color:var(--forest); margin-bottom:16px; letter-spacing:0.05em;">🍽️ おすすめランチ</h3>
+    <div class="sightseeing-grid">
+      <div class="sight-card">
+        <div class="sight-emoji">☕</div>
+        <div class="sight-name">ELOISES Café 八ヶ岳店</div>
+        <p class="sight-desc">北杜市長坂町の八ヶ岳の自然に囲まれたおしゃれなカフェ。洗練されたインテリアと開放的な空間でランチが楽しめる。週末は混雑するため早めの来店を。</p>
+        <div class="sight-dist">🚗 コテージから約20分</div>
+      </div>
+      <div class="sight-card">
+        <div class="sight-emoji">🥩</div>
+        <div class="sight-name">まきばレストラン</div>
+        <p class="sight-desc">標高1,420mのまきば公園内に位置するレストラン。大自然の絶景とともに地元食材を使った料理が楽しめる。牧場直送の食材を使ったメニューが人気。</p>
+        <div class="sight-dist">🚗 コテージから約20分</div>
+      </div>
+      <div class="sight-card">
+        <div class="sight-emoji">🍦</div>
+        <div class="sight-name">清泉寮カフェ</div>
+        <p class="sight-desc">清里高原の清泉寮内にあるカフェ。名物のジャージー牛乳ソフトクリームは絶対食べたい一品。テラス席から八ヶ岳の絶景を楽しみながらランチも◎</p>
+        <div class="sight-dist">🚗 コテージから約25分</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PACKING ===== -->
+<div class="bg-forest-light packing-section" id="packing">
+  <div class="section">
+    <div class="section-header">
+      <div class="section-tag">PACKING LIST</div>
+      <h2 class="section-title">持ち物 <span>チェックリスト</span></h2>
+      <p class="section-desc">チェックボックスをクリックして確認済みにできます。アメニティ提供品は持参不要です。</p>
+    </div>
+
+    <!-- アメニティ提供品メモ -->
+    <div class="amenity-note" style="margin-bottom:32px;">
+      <div class="amenity-note-title">🏡 コテージで提供されるアメニティ（持参不要）</div>
+      <p style="font-size:0.83rem; color:var(--text-mid);">以下のアメニティはコテージに備え付けがあります。荷物を減らしましょう。</p>
+      <div class="amenity-tags">
+        <span class="amenity-tag">タオル・シーツ</span>
+        <span class="amenity-tag">シャンプー・ボディソープ</span>
+        <span class="amenity-tag">石鹸・トイレットペーパー</span>
+        <span class="amenity-tag">ヘアドライヤー</span>
+        <span class="amenity-tag">ハンガー</span>
+        <span class="amenity-tag">Wi-Fi</span>
+        <span class="amenity-tag">テレビ</span>
+        <span class="amenity-tag">食器・カトラリー</span>
+        <span class="amenity-tag">冷蔵庫・電子レンジ</span>
+        <span class="amenity-tag">洗濯機・乾燥機</span>
+        <span class="amenity-tag">エアコン・暖房</span>
+        <span class="amenity-tag">ベビーベッド・ベビーチェア</span>
+      </div>
+    </div>
+
+    <div class="packing-grid">
+      <!-- 必須 -->
+      <div class="pack-card">
+        <div class="pack-card-header">
+          <div class="pack-icon">📋</div>
+          <div class="pack-title">必須アイテム</div>
+        </div>
+        <ul class="pack-items">
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">財布・現金・クレジットカード</div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">運転免許証<span class="pack-item-note">ドライバーは必須</span></div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">ETCカード</div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">コストコ会員証<span class="pack-item-note">代表者1名分でOK</span></div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">スマートフォン・充電器</div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">モバイルバッテリー</div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">健康保険証</div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">Airbnb予約確認メール<span class="pack-item-note">チェックイン情報・暗証番号など</span></div></li>
+        </ul>
+      </div>
+
+      <!-- 衣類 -->
+      <div class="pack-card">
+        <div class="pack-card-header">
+          <div class="pack-icon">👕</div>
+          <div class="pack-title">衣類・身の回り品</div>
+        </div>
+        <ul class="pack-items">
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">着替え（2泊分＋予備）<span class="pack-item-note">洗濯機・乾燥機完備なので最小限でOK</span></div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">パジャマ・部屋着</div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">防寒着・羽織るもの<span class="pack-item-note">5月の朝晩は10℃前後まで冷え込む</span></div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">サウナ用タオル（大）<span class="pack-item-note">タオルは提供あり。サウナ専用は別途あると快適</span></div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">サンダル・スリッパ</div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">歩きやすいスニーカー<span class="pack-item-note">吐竜の滝・まきば公園の散策用</span></div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">洗面用具・スキンケア<span class="pack-item-note">石鹸・シャンプー等は提供あり。使い慣れたものがあれば</span></div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">常備薬・絆創膏</div></li>
+        </ul>
+      </div>
+
+      <!-- 食材・BBQ -->
+      <div class="pack-card">
+        <div class="pack-card-header">
+          <div class="pack-icon">🍖</div>
+          <div class="pack-title">食材・BBQ関連</div>
+        </div>
+        <ul class="pack-items">
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">クーラーボックス<span class="pack-item-note">コストコ・スーパーでの買い出し用</span></div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">保冷剤（多めに）</div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">エコバッグ・マイバッグ</div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">調味料（塩・こしょう・醤油・油など）<span class="pack-item-note">小分け容器に入れると便利</span></div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">キッチンペーパー・ウェットティッシュ</div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">ゴミ袋（多めに）</div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">ラップ・アルミホイル</div></li>
+        </ul>
+      </div>
+
+      <!-- あると便利 -->
+      <div class="pack-card">
+        <div class="pack-card-header">
+          <div class="pack-icon">✨</div>
+          <div class="pack-title">あると便利なもの</div>
+        </div>
+        <ul class="pack-items">
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">サウナハット<span class="pack-item-note">頭部を熱から守る。サウナ好きに必須</span></div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">日焼け止め・サングラス・帽子<span class="pack-item-note">高原は紫外線が強い</span></div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">虫除けスプレー<span class="pack-item-note">5月の山中は虫が多い</span></div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">Bluetoothスピーカー<span class="pack-item-note">コテージでの音楽・焚き火タイムに</span></div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">ボードゲーム・トランプ<span class="pack-item-note">夜の団欒用</span></div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">カメラ・三脚<span class="pack-item-note">富士山・星空撮影に</span></div></li>
+          <li><div class="check-box" onclick="toggleCheck(this)"></div><div class="pack-item-text">折りたたみ傘・レインウェア<span class="pack-item-note">山の天気は変わりやすい</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="footer-title">🏕️ 旅のしおり</div>
+  <p>山梨県北杜市 八ヶ岳グランピング旅行 · 2025年5月23日〜25日</p>
+  <p style="margin-top:8px; font-size:0.72rem; opacity:0.5;">Have a wonderful trip! 🌲🗻✨</p>
+</footer>
+
+<script>
+  // ===== STARS =====
+  const starsContainer = document.getElementById('stars');
+  for (let i = 0; i < 60; i++) {
+    const star = document.createElement('div');
+    star.className = 'star';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.top = Math.random() * 100 + '%';
+    star.style.animationDelay = Math.random() * 3 + 's';
+    star.style.animationDuration = (2 + Math.random() * 3) + 's';
+    starsContainer.appendChild(star);
+  }
+
+  // ===== CHECKBOX =====
+  function toggleCheck(el) {
+    el.classList.toggle('checked');
+  }
+
+  // ===== SMOOTH SCROLL =====
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
